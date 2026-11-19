@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GroceryKo | Sign Up</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css folder/style.css">
+</head>
+<body>
+    <main class="page">
+        <h1 class="brand">GroceryKo</h1>
+        <p class="tagline">Make your list once, shop without forgetting anything.</p>
+
+        <!-- Registration Form -->
+        <section id="registrationSection" class="card">
+            <h2>Create your account</h2>
+
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" autocomplete="name" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" autocomplete="street-address" required>
+
+            <label for="user_name">Username</label>
+            <input type="text" id="user_name" autocomplete="username" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" autocomplete="email" required>
+
+            <label for="pword">Password</label>
+            <!-- type="password" so the characters are hidden -->
+            <input type="password" id="pword" autocomplete="new-password" required>
+
+            <button type="button" onclick="saveUserRecord()">Sign Up</button>
+            <p id="regMessage" class="message" role="status"></p>
+
+            <p class="switch">Already have an account? <a href="login.html">Log in</a></p>
+        </section>
+    </main>
+
+    <!-- storage.js first: reg.js depends on its helper functions -->
+    <script src="js folder/storage.js"></script>
+    <script src="js folder/reg.js"></script>
+</body>
+</html>

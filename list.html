@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GroceryKo | My Grocery List</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css folder/style.css">
+</head>
+<body>
+    <main class="page page-wide">
+        <header class="topbar">
+            <h1 class="brand">GroceryKo</h1>
+            <div class="userbox">
+                <span id="welcomeText"></span>
+                <button type="button" class="btn-ghost" onclick="logoutUser()">Log Out</button>
+            </div>
+        </header>
+
+        <!-- Grocery list -->
+        <section id="grocerySection" class="card">
+            <h2>Grocery Item List</h2>
+
+            <div class="add-row">
+                <div class="field">
+                    <label for="item_uname">Item Name</label>
+                    <input type="text" id="item_uname" placeholder="e.g. Rice">
+                </div>
+                <div class="field field-qty">
+                    <label for="item_qty">Quantity</label>
+                    <input type="number" id="item_qty" min="1" value="1">
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button type="button" onclick="addItem()">Add Item</button>
+                <button type="button" class="btn-ghost" onclick="clearList()">Clear List</button>
+            </div>
+            <p id="listMessage" class="message" role="status"></p>
+
+            <hr>
+            <h2>ANG LISTAHAN</h2>
+            <p id="itemCount" class="count"></p>
+            <ul id="groceryList"></ul>
+        </section>
+    </main>
+
+    <!-- storage.js first: list.js depends on its helper functions -->
+    <script src="js folder/storage.js"></script>
+    <script src="js folder/list.js"></script>
+</body>
+</html

@@ -1,0 +1,203 @@
+/* =====================================================
+   style.css  -  GroceryKo (no frameworks)
+   Used by register.html, login.html and list.html.
+   Theme: white + black + blue presenting ComSci
+   (same layout, only colors changed)
+   ===================================================== */
+/* ---------- Colors and sizes in one place (CSS variables) ---------- */
+:root {
+    --bg: #eef2ff;        /* white with blue tint - page background */
+    --paper: #ffffff;     /* white - card background */
+    --ink: #0a0e14;       /* black - main text */
+    --muted: #4d5f7a;     /* blue-gray - secondary text */
+    --green: #1447e6;     /* blue - main buttons and brand */
+    --green-dark: #0a2fa8;
+    --mango: #2f7bff;     /* bright blue - focus ring and accents */
+    --line: #c2cfe8;      /* light blue-gray - borders */
+    --danger: #0a0e14;
+    --ok: #1447e6;
+}
+/* ---------- Reset and base ---------- */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+}
+/* ---------- Page layout ---------- */
+.page {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 40px 18px 56px;
+}
+.page-wide { max-width: 640px; }
+.brand {
+    margin: 0 0 4px;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+    color: var(--green);
+}
+.tagline {
+    margin: 0 0 24px;
+    color: var(--muted);
+}
+/* Top bar on the list page: brand on the left, user + log out on the right */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.topbar .brand { margin: 0; }
+.userbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+}
+/* ---------- Card (the white box holding each form) ---------- */
+.card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 8px solid var(--green);   /* blue edge, like a list sheet */
+    border-radius: 6px;
+    padding: 24px;
+}
+.card h2 {
+    margin: 0 0 16px;
+    font-size: 1.25rem;
+}
+hr {
+    border: 0;
+    border-top: 2px dashed var(--line);
+    margin: 24px 0;
+}
+/* ---------- Form fields ---------- */
+label {
+    display: block;
+    margin: 14px 0 4px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+input {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--ink);
+    background: #f8faff;
+    border: 1px solid #9db1d6;
+    border-radius: 4px;
+}
+input:focus,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--mango);
+    outline-offset: 1px;
+}
+/* Item name + quantity sit side by side on the list page */
+.add-row {
+    display: flex;
+    gap: 12px;
+}
+.add-row .field { flex: 1; }
+.add-row .field-qty { flex: 0 0 110px; }
+.add-row label { margin-top: 0; }
+/* ---------- Buttons ---------- */
+button {
+    margin-top: 18px;
+    padding: 10px 18px;
+    font: inherit;
+    font-weight: bold;
+    color: #fff;
+    background: var(--green);
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover { background: var(--green-dark); }
+.btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+/* Outlined button for secondary actions (Clear List, Log Out) */
+.btn-ghost {
+    color: var(--green);
+    background: transparent;
+    border: 2px solid var(--green);
+}
+.btn-ghost:hover {
+    color: #fff;
+    background: var(--green);
+}
+.topbar .btn-ghost { margin-top: 0; }
+/* ---------- Messages (success / error) ---------- */
+.message {
+    min-height: 1.4em;
+    margin: 12px 0 0;
+    font-weight: bold;
+}
+.message.ok    { color: var(--ok); }
+.message.error { color: var(--danger); }
+.switch {
+    margin: 18px 0 0;
+    color: var(--muted);
+}
+a { color: var(--green); font-weight: bold; }
+/* ---------- Grocery list ---------- */
+.count {
+    margin: -8px 0 12px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+#groceryList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#groceryList li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);   /* ruled-paper look */
+}
+.item-text { flex: 1; word-break: break-word; }
+.item-qty {
+    min-width: 36px;
+    font-weight: bold;
+    color: var(--green);
+}
+/* Bought items are crossed out and faded */
+#groceryList li.bought .item-text {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+#groceryList li.bought .item-qty { color: var(--muted); }
+/* Empty list message */
+#groceryList li.empty {
+    display: block;
+    color: var(--muted);
+    border-bottom: 0;
+}
+/* Small buttons inside each list row */
+.btn-small {
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+.btn-danger { background: var(--danger); }
+.btn-danger:hover { background: #000000; }
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+    .add-row { flex-direction: column; gap: 0; }
+    .add-row .field-qty { flex: 1; }
+    .add-row .field label { margin-top: 14px; }
+    .add-row .field:first-child label { margin-top: 0; }
+    #groceryList li { flex-wrap: wrap; }
+    .item-text { flex-basis: 100%; }
+}
